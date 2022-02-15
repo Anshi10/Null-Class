@@ -136,6 +136,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAccount() {
         Logbtn.setText(R.string.register)
+        forgotPassword.isInvisible=true
         createAccount.isInvisible = true
         //action on clicking register button
         Logbtn.setOnClickListener {
