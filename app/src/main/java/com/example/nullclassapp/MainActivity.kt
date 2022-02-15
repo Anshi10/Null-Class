@@ -78,14 +78,14 @@ class MainActivity : AppCompatActivity() {
         if (editText.text.toString().isEmpty()) {
             Toast.makeText(this, "Enter an Email Id ", Toast.LENGTH_SHORT).show()
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
+        else if(!Patterns.EMAIL_ADDRESS.matcher(editText.text.toString()).matches()) {
             Toast.makeText(this, "Enter a Valid Email Id ", Toast.LENGTH_SHORT).show()
         }
-        auth.sendPasswordResetEmail(editText.text.trim().toString()).addOnCompleteListener { task ->
+       else{ auth.sendPasswordResetEmail(editText.text.trim().toString()).addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 Toast.makeText(this, "Email sent", Toast.LENGTH_SHORT).show()
             }
-        }
+        }}
     }
 
     private fun signIn() {
@@ -150,6 +150,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Input Required!", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     fun signinUser(userName: String, password: String) {
