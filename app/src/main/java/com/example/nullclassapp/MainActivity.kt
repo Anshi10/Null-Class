@@ -45,13 +45,13 @@ class MainActivity : AppCompatActivity() {
 
         //on clicking Log in button
         Logbtn.setOnClickListener {
-            //storing values
-            val userName: String = username.text?.trim().toString()
-            val password: String = password.text?.trim().toString()
-            if (userName != null || password != null) {
-                Toast.makeText(this, " Enter Credentials", Toast.LENGTH_SHORT).show()
+            if (username.text.toString().isEmpty() || password.text.toString().isEmpty()) {
+                Toast.makeText(this, " Enter Field", Toast.LENGTH_SHORT).show()
             } else {
-                signinUser(userName, password)
+                //storing values
+                val userName: String = username.text?.trim().toString()
+                val Password: String = password.text?.trim().toString()
+                signinUser(userName, Password)
             }
         }
         //when create account is clicked
@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity() {
                 finish()
             } else {
                 Log.e("msg", "Error Occurred ", task.exception)
-                Toast.makeText(this, "" + task.exception, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "" + task.exception, Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                Toast.makeText(this, "" + task.exception, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "" + task.exception, Toast.LENGTH_SHORT).show()
             }
         }
     }
